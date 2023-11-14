@@ -4,23 +4,33 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
+#include <limits.h>
 
+typedef struct format
+{
+	char *id;
+	int (*f)();
+} match;
+
+int printf_char(va_list val);
+int _putchar(char c);
 int _printf(const char *format, ...);
-void handle_format_specifier(char specifier, va_list args, int *count);
-int _puts(const char *str);
-int putchar(int c);
-int putint(int n);
-int print_number(unsigned int n);
-int putbinary(unsigned int n);
-int putuint(unsigned int n);
-int putoctal(unsigned int n);
-int puthex(unsigned int n, int uppercase);
-int putstr_non_printable(const char *str);
-int putptr(void *ptr);
-int put_hex_extra(unsigned long int num);
-int print_HEX_extra(unsigned int numi);
-int putstr_reversed(const char *str);
-int putstr_rot13(const char *str);
-int rotate_13(int c);
+int printf_string(va_list val);
+int _strlen(char *str);
+int _strlenc(const char *str);
+int print_37(void);
+int print_int(va_list args);
+int print_dec(va_list args);
+int print_bin(va_list val);
+int print_unsigned(va_list args);
+int print_octal(va_list val);
+int print_hex(va_list val);
+int print_HEX(va_list val);
+int print_HEX_extra(unsigned int num);
+int print_exc_string(va_list val);
+int print_hex_extra(unsigned long int num);
+int print_pointer(va_list val);
+int print_rot13(va_list val);
+int print_revs(va_list val);
 
 #endif
