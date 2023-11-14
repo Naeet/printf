@@ -9,7 +9,6 @@ int _printf(const char *format, ...)
 	va_list args;
 	int count = 0;
 	const char *ptr;
-	char buffer[1024];
 
 	va_start(args, format);
 
@@ -18,13 +17,10 @@ int _printf(const char *format, ...)
 
 	for (ptr = format; *ptr != '\0'; ptr++)
 	{
-		if (count == 1024)
-		{
-			write(1, buffer, count);
-			count = 0;
-		}
+
 		if (*ptr == '%' && *(ptr + 1) != '\0')
 		{
+
 			ptr++;
 			switch (*ptr)
 			{
@@ -69,23 +65,18 @@ int _printf(const char *format, ...)
 					buffer[count++] = '%';
 					break;
 				default:
-					buffer[count++] = '%';
-					buffer[count++] = *ptr;
+					count += putchar('%');
+					count += putchar(*ptr);
 					break;
 			}
 		}
 		else
 		{
-			buffer[count++] = *ptr;
+			count += putchar(*ptr);
 		}
 	}
 
 	va_end(args);
-
-	if (count > 0)
-	{
-		write(1, buffer, count);
-	}
 
 	return (count);
 }
