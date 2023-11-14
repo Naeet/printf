@@ -10,7 +10,7 @@ int putptr(void *ptr)
 
 	count += _puts("0x");
 	count += put_hex_extra((unsigned long)ptr);
-	return (count + 2);
+	return (count);
 }
 /**
  * put_hex_extra - fun
