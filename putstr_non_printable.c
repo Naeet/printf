@@ -6,27 +6,63 @@
  */
 int putstr_non_printable(const char *str)
 {
-	int count = 0;
-	const unsigned char *ustr = (const unsigned char *)str;
+	int i, len = 0;
+	int value;
 
-	if (ustr == NULL)
-	{
-		count += _puts("(null)");
-		return (count);
-	}
+	if (str == NULL)
+		str = "(null)";
 
-	while (*ustr != '\0')
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		if (*ustr < 32 || *ustr >= 127)
+		if (str[i] < 32 || str[i] >= 127)
 		{
-			count += putchar('\\');
-			count += puthex(*ustr, 1);
+			putchar('\\');
+			putchar('x');
+			len = len + 2;
+			value = str[i];
+			if (value < 16)
+			{
+				putchar('0');
+				len++;
+			}
+			len = len + print_HEX_extra(value);
 		}
 		else
 		{
-			count += putchar(*ustr);
+			putchar(str[i]);
+			len++;
 		}
-		ustr++;
 	}
+	return (len);
+}
+
+int print_HEX_extra(unsigned int num)
+{
+	int i, count = 0;
+	int *array;
+	unsigned int tmp = num;
+
+	while (num / 16 != 0)
+	{
+		num = num / 16;
+		count++;
+	}
+	count++;
+	array = malloc(sizeof(int) * count);
+
+	for (i = 0; i < count; i++)
+	{
+		array[i] = tmp % 16;
+		tmp = tmp / 16;
+	}
+
+	for (i = count - 1; i >= 0; i--)
+	{
+		if (array[i] > 9)
+			array[i] = array[i] + 7;
+		putchar(array[i] + '0');
+	}
+	free(array);
+
 	return (count);
 }
