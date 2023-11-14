@@ -6,11 +6,22 @@
  */
 int putptr(void *ptr)
 {
-	int count = 0;
+	int i, b;
+	char *s = "(nil)";
+	long int a;
 
-	count += _puts("0x");
-	count += put_hex_extra((unsigned long)ptr);
-	return (count);
+	if (ptr == NULL)
+	{
+		for (i = 0; s[i] != '\0'; i++)
+			putchar(s[i]);
+		return (i);
+	}
+	a = (unsigned long int)ptr;
+	putchar('0');
+	putchar('x');
+	b = put_hex_extra(a);
+
+	return (b + 2);
 }
 /**
  * put_hex_extra - fun
