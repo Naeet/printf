@@ -21,7 +21,7 @@ int putptr(void *ptr)
 	putchar('x');
 	b = put_hex_extra(a);
 
-	return (b + 2);
+	return (b);
 }
 /**
  * put_hex_extra - fun
