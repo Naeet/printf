@@ -12,7 +12,11 @@ int putptr(void *ptr)
 	count += put_hex_extra((unsigned long)ptr);
 	return (count + 2);
 }
-
+/**
+ * put_hex_extra - fun
+ * @num: num
+ * Return: int
+ */
 int put_hex_extra(unsigned long int num)
 {
 	long int i, count = 0;
