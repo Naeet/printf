@@ -50,6 +50,9 @@ int _printf(const char *format, ...)
 				case 'S':
 					count += putstr_non_printable(va_arg(args, char *));
 					break;
+				case 'p':
+					count += putptr(va_arg(args, void *));
+					break;
 				case 'r':
 					count += putstr_reversed(va_arg(args, char *));
 					break;

@@ -16,6 +16,7 @@ int putoctal(unsigned int n);
 int puthex(unsigned int n, int uppercase);
 int putstr_non_printable(const char *str);
 int putptr(void *ptr);
+int put_hex_extra(unsigned long int num);
 int putstr_reversed(const char *str);
 int putstr_rot13(const char *str);
 int rotate_13(int c);
