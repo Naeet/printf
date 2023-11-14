@@ -62,7 +62,7 @@ int _printf(const char *format, ...)
 					count += putstr_rot13(va_arg(args, char *));
 					break;
 				case '%':
-					buffer[count++] = '%';
+					count += putchar('%');
 					break;
 				default:
 					count += putchar('%');
