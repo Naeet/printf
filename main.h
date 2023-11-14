@@ -6,6 +6,7 @@
 #include <unistd.h>
 
 int _printf(const char *format, ...);
+void handle_format_specifier(char specifier, va_list args, int *count);
 int _puts(const char *str);
 int putchar(int c);
 int putint(int n);
