@@ -22,7 +22,6 @@ int _printf(const char *format, ...)
 	va_start(args, format);
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
-Here:
 
 	while (format[i] != '\0')
 	{
@@ -37,9 +36,21 @@ Here:
 			}
 			j--;
 		}
+		if (format[i] == '+' || format[i] == ' ' || format[i] == '#')
+		{
+			_putchar(format[i]);
+			i++;
+			len++;
+		}
+		else
+		{
 		_putchar(format[i]);
 		i++;
 		len++;
+		}
+	
+Here:
+	continue;
 	}
 	va_end(args);
 	return (len);
