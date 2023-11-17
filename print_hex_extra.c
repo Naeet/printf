@@ -9,7 +9,7 @@
 int print_hex_extra(unsigned long int num)
 {
 	long int i, count = 0;
-	int *array;
+	long int *array;
 	unsigned long int tmp = num;
 
 	while (num / 16 != 0)
@@ -18,7 +18,7 @@ int print_hex_extra(unsigned long int num)
 		count++;
 	}
 	count++;
-	array = malloc(sizeof(int) * count);
+	array = malloc(sizeof(long int) * count);
 
 	for (i = 0; i < count; i++)
 	{
