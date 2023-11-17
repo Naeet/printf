@@ -18,7 +18,7 @@ int print_hex_extra(unsigned long int num)
 		count++;
 	}
 	count++;
-	array = malloc(sizeof(long int) * count);
+	array = malloc(sizeof(int) * count);
 
 	for (i = 0; i < count; i++)
 	{
