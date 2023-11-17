@@ -9,7 +9,7 @@
 int print_hex_extra(unsigned long int num)
 {
 	long int i, count = 0;
-	long int *array;
+	int *array;
 	unsigned long int tmp = num;
 
 	while (num / 16 != 0)
